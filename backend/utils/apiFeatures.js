@@ -5,7 +5,6 @@ class ApiFeatures{
     }
 
     search(){
-        console.log(this.queryStr)
         const keyword = this.queryStr.keyword ? {
             name:{
                 $regex:this.queryStr.keyword,
@@ -27,7 +26,6 @@ class ApiFeatures{
         queryStr = queryStr.replace(/\b(gt|gte|lt|lte)\b/g, (key) => `$${key}`);
 
         this.query = this.query.find(JSON.parse(queryStr));
-        this.query = this.query.find(queryCopy)
         return this
     }
     pagination(resultPerPage) {
